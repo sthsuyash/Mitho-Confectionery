@@ -1,4 +1,5 @@
 # Project E-Commerce
+
 - using Java SpringBoot and templating engine ThymeLeaf
 
 ## Features
@@ -9,7 +10,7 @@
   - Products
 
 - ### User Section
-- 
+
   - Google OAuth
   - Custom Auth
   - Role based auth

@@ -1,26 +1,41 @@
-<!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <meta charset="UTF-8"/>
+    <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 
-    <title>Document</title>
+    <!--    bootstrap cdn-->
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous"
+    />
+
+    <!--    favicon-->
+    <link rel="icon" th:href="@{/images/logo.png}" href="images/favicon.png" type="image/png" sizes="16x16">
+
+    <title>Mitho Confectionary || Checkout</title>
 </head>
+
 <body>
-
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img th:src="@{/images/logo.png}"  src="../static/images/logo.png" width="auto" height="40" class="d-inline-block align-top" alt=""/>
+            <img th:src="@{/images/logo.png}" src="../static/images/logo.png" width="auto" height="40"
+                 class="d-inline-block align-top" alt=""/>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -98,7 +113,6 @@
                         <!-- Grid row -->
 
 
-
                         <!-- Country -->
                         <div class="d-flex flex-wrap">
                             <div class="select-outline position-relative w-100">
@@ -111,7 +125,8 @@
                         <!-- Address Part 1 -->
                         <div class="md-form md-outline mt-2">
                             <label for="form14">Address (Line 1)</label>
-                            <input type="text" required id="form14" placeholder="House number and street name" class="form-control">
+                            <input type="text" required id="form14" placeholder="House number and street name"
+                                   class="form-control">
                         </div>
 
                         <!-- Address Part 2 -->
@@ -137,7 +152,8 @@
                         <!-- Phone -->
                         <div class="md-form md-outline mt-2">
                             <label for="form18">Phone</label>
-                            <input type="number" minlength="10" maxlength="10" required id="form18" class="form-control">
+                            <input type="number" minlength="10" maxlength="10" required id="form18"
+                                   class="form-control">
                         </div>
 
                         <!-- Email address -->
@@ -151,7 +167,6 @@
                             <label for="form76">Additional information</label>
                             <textarea id="form76" class="md-textarea form-control" rows="4"></textarea>
                         </div>
-
 
 
                     </div>
@@ -190,8 +205,9 @@
                             </li>
                         </ul>
 
-                        <form action="" method="post" th:action="@{/payNow}" >
-                            <button type="submit"  class="btn btn-primary btn-block waves-effect waves-light">Pay Now</button>
+                        <form action="" method="post" th:action="@{/payNow}">
+                            <button type="submit" class="btn btn-primary btn-block waves-effect waves-light">Pay Now
+                            </button>
                         </form>
 
                     </div>
@@ -202,7 +218,8 @@
                 <div class="card mb-4">
                     <div class="card-body">
 
-                        <a class="dark-grey-text d-flex justify-content-between" data-toggle="collapse" href="#collapseExample"
+                        <a class="dark-grey-text d-flex justify-content-between" data-toggle="collapse"
+                           href="#collapseExample"
                            aria-expanded="false" aria-controls="collapseExample">
                             Add a discount code (optional)
                             <span><i class="fas fa-chevron-down pt-1"></i></span>
@@ -233,11 +250,14 @@
 </div>
 
 
-
-
-
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 </body>
 </html>

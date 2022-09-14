@@ -2,7 +2,6 @@
 <html
         lang="en"
         xmlns:th="http://www.thymeleaf.org"
-        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
 >
 
 <head>
@@ -24,7 +23,7 @@
     <!--    favicon-->
     <link rel="icon" th:href="@{/images/logo.png}" href="images/favicon.png" type="image/png" sizes="16x16">
 
-    <title>Mitho Confectionary || Products</title>
+    <title>Mitho Confectionary || Items</title>
 </head>
 
 <body>
@@ -56,12 +55,12 @@
 </nav>
 <div class="container-fluid">
 
-    <a th:href="@{/admin/products/add}" style="margin: 20px 0" class="btn btn-primary">Add Product</a>
+    <a th:href="@{/admin/items/add}" style="margin: 20px 0" class="btn btn-primary">Add Item</a>
     <table class="table">
         <thead class="thead-light">
         <tr>
             <th scope="col">SN</th>
-            <th scope="col">Product Name</th>
+            <th scope="col">Item Name</th>
             <th scope="col">Category</th>
             <th scope="col">Preview</th>
             <th scope="col">Delete</th>
@@ -70,15 +69,15 @@
         </thead>
         <tbody>
 
-        <tr th:each="product, iStat : ${products}">
+        <tr th:each="item, iStat : ${items}">
             <th scope="row" th:text="${iStat.index + 1}">1</th>
-            <td th:text="${product.name}">Larry</td>
-            <td th:text="${product.category.name}">Larry</td>
-            <td><img src="" height="100px" width="100px" th:src="@{${'/productImages/' + product.imageName}}"></td>
+            <td th:text="${item.name}">Larry</td>
+            <td th:text="${item.category.name}">Larry</td>
+            <td><img src="" height="100px" width="100px" th:src="@{${'/itemImages/' + item.imageName}}"></td>
 
-            <td><a href="" th:href="@{/admin/product/delete/{id}(id=${product.id})}" class="btn btn-danger">Delete</a>
+            <td><a href="" th:href="@{/admin/item/delete/{id}(id=${item.id})}" class="btn btn-danger">Delete</a>
             </td>
-            <td><a href="" th:href="@{/admin/product/update/{id}(id=${product.id})}" class="btn btn-warning">Update</a>
+            <td><a href="" th:href="@{/admin/item/update/{id}(id=${item.id})}" class="btn btn-warning">Update</a>
             </td>
 
         </tr>

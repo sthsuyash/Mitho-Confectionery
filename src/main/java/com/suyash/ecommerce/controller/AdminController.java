@@ -1,13 +1,20 @@
 package com.suyash.ecommerce.controller;
 
+import com.suyash.ecommerce.dto.ItemDTO;
 import com.suyash.ecommerce.exception.CategoryNotFoundException;
 import com.suyash.ecommerce.model.Category;
+import com.suyash.ecommerce.model.Item;
 import com.suyash.ecommerce.service.CategoryService;
+import com.suyash.ecommerce.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Optional;
 
 @Controller
@@ -17,11 +24,18 @@ public class AdminController {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private ItemService itemService;
+
     // returns admin dashboard
     @GetMapping()
     public String adminHome() {
         return "adminHome";
     }
+
+    /**
+     * category section
+     **/
 
     // returns category page
     @GetMapping("/categories")
@@ -62,5 +76,56 @@ public class AdminController {
             throw new CategoryNotFoundException("Category not found");
         }
     }
+
+    /**
+     * items section
+     **/
+
+    // returns items page
+    @GetMapping("/items")
+    public String getItems(Model model) {
+        model.addAttribute("items", itemService.getAllItems());
+        return "items";
+    }
+
+    // returns add product page
+    @GetMapping("/items/add")
+    public String getItemsAdd(Model model) {
+        model.addAttribute("itemDTO", new ItemDTO());
+        model.addAttribute("categories", categoryService.getAllCategories());
+        return "itemsAdd";
+    }
+
+    // add product
+    @PostMapping("/items/add")
+    public String postItemsAdd(@ModelAttribute("itemDTO") ItemDTO itemDTO,
+                               @RequestParam("itemImage") MultipartFile file,
+                               @RequestParam("imageUrl") String imageUrl)
+            throws IOException {
+
+        Item item = new Item();
+
+        item.setId(itemDTO.getId());
+        item.setName(itemDTO.getName());
+        item.setCategory(categoryService.getCategoryById(itemDTO.getCategoryId()).get());
+        item.setPrice(itemDTO.getPrice());
+        item.setWeight(itemDTO.getWeight());
+        item.setDescription(itemDTO.getDescription());
+
+        String imageUUID;
+        if (!file.isEmpty()) {
+            imageUUID = file.getOriginalFilename();
+            Path fileNameAndPath = Path.of(uploadDir, imageUUID);
+            Files.write(fileNameAndPath, file.getBytes());
+        } else {
+            imageUUID = imageUrl;
+        }
+        item.setImageName(imageUUID);
+
+        itemService.addItem(item);
+
+        return "redirect:/admin/items";
+    }
+
 
 }

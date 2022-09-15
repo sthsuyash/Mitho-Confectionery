@@ -33,11 +33,6 @@ public class ItemService {
         return itemRepository.findById(id);
     }
 
-    // update product
-    public void updateItem(Item item) {
-        itemRepository.save(item);
-    }
-
     // get all item by category
     public List<Item> getAllItemsByCategory(Long id) {
         return itemRepository.findAllByCategoryId(id);

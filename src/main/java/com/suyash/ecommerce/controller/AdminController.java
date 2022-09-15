@@ -129,5 +129,31 @@ public class AdminController {
         return "redirect:/admin/items";
     }
 
+    // delete product by id
+    @GetMapping("/items/delete/{id}")
+    public String deleteItem(@PathVariable Long id) {
+        itemService.deleteItemById(id);
+        return "redirect:/admin/items";
+    }
 
+    // update product by id
+    @GetMapping("/items/update/{id}")
+    public String updateItem(@PathVariable("id") Long id, Model model) {
+
+        Item item = itemService.getItemById(id).get();
+
+        ItemDTO itemDTO = new ItemDTO();
+        itemDTO.setId(item.getId());
+        itemDTO.setName(item.getName());
+        itemDTO.setCategoryId(item.getCategory().getId());
+        itemDTO.setPrice(item.getPrice());
+        itemDTO.setWeight(item.getWeight());
+        itemDTO.setDescription(item.getDescription());
+        itemDTO.setImageUrl(item.getImageName());
+
+        model.addAttribute("categories", categoryService.getAllCategories());
+        model.addAttribute("itemDTO", itemDTO);
+
+        return "itemsAdd";
+    }
 }

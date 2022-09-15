@@ -75,9 +75,9 @@
             <td th:text="${item.category.name}">Larry</td>
             <td><img src="" height="100px" width="100px" th:src="@{${'/itemImages/' + item.imageName}}"></td>
 
-            <td><a href="" th:href="@{/admin/item/delete/{id}(id=${item.id})}" class="btn btn-danger">Delete</a>
+            <td><a href="" th:href="@{/admin/items/delete/{id}(id=${item.id})}" class="btn btn-danger">Delete</a>
             </td>
-            <td><a href="" th:href="@{/admin/item/update/{id}(id=${item.id})}" class="btn btn-warning">Update</a>
+            <td><a href="" th:href="@{/admin/items/update/{id}(id=${item.id})}" class="btn btn-warning">Update</a>
             </td>
 
         </tr>

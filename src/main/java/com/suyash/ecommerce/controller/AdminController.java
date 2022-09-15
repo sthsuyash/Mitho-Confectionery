@@ -21,6 +21,8 @@ import java.util.Optional;
 @RequestMapping("/admin")
 public class AdminController {
 
+    public static String uploadDirectory = System.getProperty("user.dir") + "/src/main/resources/static/itemImages";
+
     @Autowired
     private CategoryService categoryService;
 
@@ -115,7 +117,7 @@ public class AdminController {
         String imageUUID;
         if (!file.isEmpty()) {
             imageUUID = file.getOriginalFilename();
-            Path fileNameAndPath = Path.of(uploadDir, imageUUID);
+            Path fileNameAndPath = Path.of(uploadDirectory, imageUUID);
             Files.write(fileNameAndPath, file.getBytes());
         } else {
             imageUUID = imageUrl;

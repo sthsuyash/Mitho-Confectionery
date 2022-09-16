@@ -41,7 +41,6 @@ public class User {
     private String email;
 
     @Column(name = "password")
-    @NotEmpty(message = "Please provide your password")
     private String password;
 
     @Column(name = "phone")
